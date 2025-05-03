@@ -1,75 +1,93 @@
-# Nuxt Minimal Starter
+# Todo App
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A simple task management app built with Vue 3, Nuxt, Drizzle, SQLite, Zod, and Pico.css.
 
-## Setup
+## Features
 
-Make sure to install dependencies:
+* List all tasks
+* Create new tasks
+* View details of a task
+* Delete tasks
+* Input validation with Zod
+* Server API powered by Nuxt's server routes
+* Drizzle ORM for type-safe database interactions
 
-```bash
-# npm
-npm install
+## Tech Stack
 
-# pnpm
-pnpm install
+* **Framework**: Nuxt 3 (Vue 3)
+* **UI**: Pico.css
+* **Database**: SQLite
+* **ORM**: Drizzle
+* **Validation**: Zod
+* **Language**: TypeScript
 
-# yarn
-yarn install
+## Getting Started
 
-# bun
-bun install
-```
+### Prerequisites
 
-## Development Server
+* Node.js v16+
+* pnpm (or npm/yarn)
 
-Start the development server on `http://localhost:3000`:
+### Installation
 
-```bash
-# npm
-npm run dev
+1. Clone the repository:
 
-# pnpm
-pnpm dev
+   ```bash
+   git clone https://github.com/locturui/todo-app-nuxt.git
+   cd todo-app-nuxt
+   ```
 
-# yarn
-yarn dev
+2. Install dependencies:
 
-# bun
-bun run dev
-```
+   ```bash
+   pnpm install
+   ```
 
-## Production
+3. Configure environment variables:
+   Create a `.env` file in the project root with:
 
-Build the application for production:
+   ```ini
+   DATABASE_URL="file:./dev.db"
+   TOKEN="token-if-cloud-db"
+   ```
 
-```bash
-# npm
-npm run build
+4. Run Drizzle migrations (if any):
 
-# pnpm
-pnpm build
+   ```bash
+   pnpm drizzle-kit generate
+   pnpm drizzle-kit push
+   ```
 
-# yarn
-yarn build
+5. Start the development server:
 
-# bun
-bun run build
-```
+   ```bash
+   pnpm dev
+   ```
 
-Locally preview production build:
+6. Open your browser at `http://localhost:3000`.
 
-```bash
-# npm
-npm run preview
+## Validation
 
-# pnpm
-pnpm preview
+Server and client inputs are validated using Zod schemas to ensure data integrity.
 
-# yarn
-yarn preview
+## Styling
 
-# bun
-bun run preview
-```
+This project uses Pico.css for a minimal, responsive design. Customize in `assets/css` or override components as needed.
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Database
+
+* SQLite database file is stored locally (e.g., `dev.db`).
+* Drizzle provides a typed schema in `lib/db/schema.ts`.
+
+## Deployment
+
+1. Build the app:
+
+   ```bash
+   pnpm build
+   ```
+2. Start in production mode:
+
+   ```bash
+   pnpm start
+   ```
